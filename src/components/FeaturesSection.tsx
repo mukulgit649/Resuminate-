@@ -1,88 +1,83 @@
-
-import { Award, CheckCircle, FileText, Search } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { motion } from 'framer-motion';
+import { FileText, Wand2, CheckCircle2, Zap, Shield, Users } from 'lucide-react';
 
 const features = [
   {
-    icon: <CheckCircle className="h-8 w-8 text-resugenius-primary" />,
-    title: "Smart Resume Scoring",
-    description: "Get an instant ATS compatibility score with specific improvement insights.",
+    icon: FileText,
+    title: "Smart Templates",
+    description: "Choose from professionally designed templates optimized for ATS systems."
   },
   {
-    icon: <FileText className="h-8 w-8 text-resugenius-primary" />,
-    title: "Real-time AI Suggestions",
-    description: "Receive tailored recommendations to enhance your resume's impact and clarity.",
+    icon: Wand2,
+    title: "AI-Powered Analysis",
+    description: "Get instant feedback and suggestions to improve your resume content."
   },
   {
-    icon: <Search className="h-8 w-8 text-resugenius-primary" />,
-    title: "Keyword Matcher",
-    description: "Match your skills and experience to job descriptions automatically.",
+    icon: CheckCircle2,
+    title: "ATS Optimization",
+    description: "Ensure your resume passes through Applicant Tracking Systems with flying colors."
   },
   {
-    icon: <Award className="h-8 w-8 text-resugenius-primary" />,
-    title: "Role-Based Resume Generator",
-    description: "Customize your resume for specific industries and positions with one click.",
+    icon: Zap,
+    title: "Quick Generation",
+    description: "Create a professional resume in minutes with our intuitive interface."
   },
+  {
+    icon: Shield,
+    title: "Privacy Focused",
+    description: "Your data is secure and never shared with third parties."
+  },
+  {
+    icon: Users,
+    title: "Team Collaboration",
+    description: "Work with career experts and get feedback on your resume."
+  }
 ];
 
-const FeaturesSection = () => {
-  const featuresRef = useRef<HTMLDivElement>(null);
+const cardHover = {
+  hover: {
+    y: -8,
+    boxShadow: "0 8px 32px 0 rgba(99,102,241,0.18)",
+    scale: 1.04,
+    transition: { type: "spring", stiffness: 300, damping: 18 },
+  },
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const featuresElements = document.querySelectorAll(".feature-card");
-    featuresElements.forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => {
-      featuresElements.forEach((el) => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
-
+export function FeaturesSection() {
   return (
-    <section className="py-20 px-4 md:px-8 bg-resugenius-background" ref={featuresRef}>
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Powerful Features for Your Career Success
-          </h2>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            ResuGenius helps you optimize your resume for every job application with powerful AI-driven tools
+    <section className="py-16">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Everything you need to create a standout resume that gets noticed
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="feature-card card p-6 opacity-0"
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="bg-background p-6 rounded-lg border transition-shadow duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover="hover"
+              whileFocus="hover"
+              variants={cardHover}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              tabIndex={0}
+              aria-label={feature.title}
             >
-              <div className="mb-4 p-3 bg-indigo-50 rounded-xl inline-block">
-                {feature.icon}
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+                <feature.icon className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
-            </div>
+              <p className="text-muted-foreground">{feature.description}</p>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default FeaturesSection;
+}

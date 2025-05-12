@@ -1,15 +1,11 @@
-
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./index.html",
+		"./src/**/*.{js,ts,jsx,tsx}",
 	],
-	prefix: "",
 	theme: {
 		container: {
 			center: true,
@@ -53,24 +49,8 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				},
-				resugenius: {
-					primary: '#6366F1', // Indigo 500
-					accent: '#F59E0B',  // Amber 500
-					background: '#F9FAFB',
-					'background-alt': '#0F172A',
-					success: '#10B981',
-					danger: '#EF4444',
-				}
+				'resuminate-primary': '#4F46E5',
+				'resuminate-background': '#F9FAFB',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
@@ -98,41 +78,45 @@ export default {
 						height: '0'
 					}
 				},
-				'fade-in': {
+				fadeIn: {
 					'0%': {
-						opacity: '0',
-						transform: 'translateY(10px)'
+						opacity: '0'
 					},
 					'100%': {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
-				},
-				'float': {
-					'0%, 100%': {
-						transform: 'translateY(0)'
-					},
-					'50%': {
-						transform: 'translateY(-10px)'
-					}
-				},
-				'pulse-slow': {
-					'0%, 100%': {
 						opacity: '1'
+					}
+				},
+				slideIn: {
+					'0%': {
+						transform: 'translateX(-100%)',
+						opacity: '0'
 					},
-					'50%': {
-						opacity: '0.8'
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					}
+				},
+				scaleIn: {
+					'0%': {
+						transform: 'scale(0.8)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.5s ease-out forwards',
-				'float': 'float 6s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 4s ease-in-out infinite'
+				'fade-in': 'fadeIn 0.5s ease-out',
+				'slide-in': 'slideIn 0.5s ease-out',
+				'scale-in': 'scaleIn 0.5s ease-out'
 			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+};
+
+export default config;

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowRight, Upload } from "lucide-react";
@@ -23,7 +22,7 @@ const ResumeAnalyzerPreview = () => {
               <p className="text-gray-600 mb-6">
                 Drag and drop your resume or click to browse
               </p>
-              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 hover:border-resugenius-primary transition-colors cursor-pointer bg-gray-50">
+              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 hover:border-resuminate-primary transition-colors cursor-pointer bg-gray-50">
                 <div className="flex flex-col items-center">
                   <Upload className="h-12 w-12 text-gray-400 mb-4" />
                   <p className="text-sm text-gray-500">
@@ -40,7 +39,7 @@ const ResumeAnalyzerPreview = () => {
           </div>
 
           <div className="lg:col-span-3 card p-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-resugenius-primary text-white px-4 py-2 rounded-bl-lg text-sm font-medium">
+            <div className="absolute top-0 right-0 bg-resuminate-primary text-white px-4 py-2 rounded-bl-lg text-sm font-medium">
               AI Analysis
             </div>
             
@@ -48,7 +47,7 @@ const ResumeAnalyzerPreview = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-gray-50 p-4 rounded-xl text-center">
-                <div className="text-5xl font-bold text-resugenius-primary mb-2">
+                <div className="text-5xl font-bold text-resuminate-primary mb-2">
                   72<span className="text-xl text-gray-400">/100</span>
                 </div>
                 <p className="text-gray-600">Overall Score</p>
