@@ -7,12 +7,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from "@/hooks/useAuth";
 
 const navigation = [
-  { name: 'Home', href: '/' },
   { name: 'Features', href: '/features' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'ATS Score', href: '/ats-score' },
   { name: 'Interview Coach', href: '/interview-coach' },
   { name: 'Job Matcher', href: '/job-matcher' },
+  { name: 'Resume Builder', href: '/resume-builder' },
+  { name: 'Dashboard', href: '/demo/Dashboard' },
 ];
 
 // Add a utility class for glowing effect

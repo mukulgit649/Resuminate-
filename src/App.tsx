@@ -27,6 +27,7 @@ import { motion } from 'framer-motion';
 import NotFound from '@/pages/NotFound';
 import Footer from '@/components/Footer';
 import PWAInstallPrompt from '@/components/PWAInstallPrompt';
+import ResumeBuilder from '@/pages/ResumeBuilder';
 
 // Import demo pages
 import ResumeUpload from '@/pages/demo/ResumeUpload';
@@ -184,6 +185,7 @@ function App() {
                     <JobMatcher />
                   </>
                 } />
+                <Route path="/resume-builder" element={<ResumeBuilder />} />
 
                 {/* Core Feature Demo Routes */}
                 <Route path="/demo/upload" element={<ResumeUpload />} />

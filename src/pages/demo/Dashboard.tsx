@@ -4,6 +4,8 @@ import { BarChart2, FileText, Target, MessageSquare, Users, TrendingUp } from 'l
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { SEO } from '@/components/SEO';
+import { ChartContainer } from '@/components/ui/chart';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 const Dashboard: React.FC = () => {
   const stats = [
@@ -62,6 +64,16 @@ const Dashboard: React.FC = () => {
     { name: "AWS", score: 75 }
   ];
 
+  // Demo progress data
+  const progressData = [
+    { date: '2024-05-01', ats: 72, match: 65, interview: 80 },
+    { date: '2024-05-05', ats: 78, match: 70, interview: 82 },
+    { date: '2024-05-10', ats: 81, match: 75, interview: 85 },
+    { date: '2024-05-15', ats: 85, match: 80, interview: 88 },
+    { date: '2024-05-20', ats: 87, match: 83, interview: 90 },
+    { date: '2024-05-25', ats: 90, match: 85, interview: 92 },
+  ];
+
   return (
     <>
       <SEO 
@@ -81,6 +93,30 @@ const Dashboard: React.FC = () => {
             <p className="text-xl text-muted-foreground">
               Track your progress and optimize your job search
             </p>
+          </motion.div>
+
+          {/* Progress Over Time Chart */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-card rounded-xl p-6 border mb-8"
+          >
+            <h2 className="text-xl font-semibold mb-6">Progress Over Time</h2>
+            <div className="w-full h-72">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={progressData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="date" tick={{ fontSize: 12 }} />
+                  <YAxis domain={[60, 100]} tick={{ fontSize: 12 }} />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="ats" name="ATS Score" stroke="#6366f1" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="match" name="Job Match" stroke="#10b981" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="interview" name="Interview Score" stroke="#f59e42" strokeWidth={2} dot={{ r: 4 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </motion.div>
 
           {/* Stats Grid */}

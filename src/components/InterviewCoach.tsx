@@ -706,9 +706,9 @@ export const InterviewCoach: React.FC = () => {
                 Experience the next generation of interview preparation. Our AI Interview Coach delivers real results—faster, smarter, and more personalized than ever.
               </p>
             </div>
-            <div className="flex flex-col gap-8 items-center w-full">
+            <div className="flex flex-col md:flex-row gap-8 items-stretch w-full justify-center">
               {/* Card 1 */}
-              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center w-full min-w-[260px] max-w-[400px] transition-transform hover:scale-105">
+              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center flex-1 min-w-[220px] max-w-[320px] transition-transform hover:scale-105">
                 <svg className="w-10 h-10 text-green-500 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>
                 <h4 className="text-xl font-bold mb-2 text-center">Higher Interview Pass Rates</h4>
                 <p className="text-muted-foreground text-base text-center">
@@ -716,7 +716,7 @@ export const InterviewCoach: React.FC = () => {
                 </p>
               </div>
               {/* Card 2 */}
-              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center w-full min-w-[260px] max-w-[400px] transition-transform hover:scale-105">
+              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center flex-1 min-w-[220px] max-w-[320px] transition-transform hover:scale-105">
                 <svg className="w-10 h-10 text-blue-500 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
                 <h4 className="text-xl font-bold mb-2 text-center">Faster Preparation</h4>
                 <p className="text-muted-foreground text-base text-center">
@@ -724,7 +724,7 @@ export const InterviewCoach: React.FC = () => {
                 </p>
               </div>
               {/* Card 3 */}
-              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center w-full min-w-[260px] max-w-[400px] transition-transform hover:scale-105">
+              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center flex-1 min-w-[220px] max-w-[320px] transition-transform hover:scale-105">
                 <svg className="w-10 h-10 text-purple-500 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20l9-5-9-5-9 5 9 5z" /><path d="M12 12V4" /></svg>
                 <h4 className="text-xl font-bold mb-2 text-center">Personalized, Actionable Feedback</h4>
                 <p className="text-muted-foreground text-base text-center">
@@ -732,7 +732,7 @@ export const InterviewCoach: React.FC = () => {
                 </p>
               </div>
               {/* Card 4 */}
-              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center w-full min-w-[260px] max-w-[400px] transition-transform hover:scale-105">
+              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center flex-1 min-w-[220px] max-w-[320px] transition-transform hover:scale-105">
                 <svg className="w-10 h-10 text-yellow-500 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 15l4-4 4 4" /></svg>
                 <h4 className="text-xl font-bold mb-2 text-center">Confidence Boost</h4>
                 <p className="text-muted-foreground text-base text-center">
@@ -740,7 +740,7 @@ export const InterviewCoach: React.FC = () => {
                 </p>
               </div>
               {/* Card 5 */}
-              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center w-full min-w-[260px] max-w-[400px] transition-transform hover:scale-105">
+              <div className="bg-card rounded-xl p-6 shadow-lg flex flex-col items-center flex-1 min-w-[220px] max-w-[320px] transition-transform hover:scale-105">
                 <svg className="w-10 h-10 text-pink-500 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2" /><path d="M16 11V7a4 4 0 0 0-8 0v4" /></svg>
                 <h4 className="text-xl font-bold mb-2 text-center">Real-World Practice Scenarios</h4>
                 <p className="text-muted-foreground text-base text-center">

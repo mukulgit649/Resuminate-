@@ -19,6 +19,11 @@ const features = [
     icon: <Target className="w-6 h-6" />,
     title: "Job Matcher",
     description: "Find the perfect job matches based on your skills and experience"
+  },
+  {
+    icon: <Brain className="w-6 h-6" />,
+    title: "Resume Builder",
+    description: "Create a professional, ATS-friendly resume from scratch using our modern templates."
   }
 ];
 
@@ -32,12 +37,15 @@ const stats = [
 export const HeroSection: React.FC = () => {
   return (
     <div className="relative overflow-hidden">
+      {/* Animated Gradient Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-0 w-[120vw] h-[60vh] -translate-x-1/2 bg-gradient-to-tr from-indigo-400 via-purple-400 to-pink-400 opacity-30 blur-2xl animate-gradient-move" />
+      </div>
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]" />
-      
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px] -z-10" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         {/* Hero Content */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 p-8 md:p-12 transition-all">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -54,7 +62,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg"
           >
             Transform Your Career with{" "}
             <span className="text-indigo-500">Resuminate</span>
@@ -76,9 +84,14 @@ export const HeroSection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="transition-transform hover:scale-105 hover:shadow-lg focus:ring-2 focus:ring-indigo-400">
               <Link to="/ats-score">
                 Get Started <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+            <Button size="lg" asChild>
+              <Link to="/resume-builder">
+                Build Your Resume
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
@@ -95,12 +108,17 @@ export const HeroSection: React.FC = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
         >
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(99,102,241,0.15)' }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className="text-center bg-white/20 dark:bg-black/20 rounded-xl p-6 shadow-sm border border-transparent hover:border-indigo-300 dark:hover:border-indigo-600 transition-all cursor-pointer"
+            >
               <div className="text-3xl font-bold text-indigo-500 mb-2">
                 {stat.value}
               </div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -112,18 +130,26 @@ export const HeroSection: React.FC = () => {
           className="grid md:grid-cols-3 gap-8"
         >
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-card rounded-xl p-6 border hover:shadow-lg transition-shadow"
+              whileHover={{ scale: 1.05, boxShadow: '0 8px 32px 0 rgba(99,102,241,0.12)' }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className="bg-card rounded-xl p-6 border hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-600 transition-all cursor-pointer"
             >
               <div className="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg flex items-center justify-center mb-4">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
+      </div>
+      {/* Wavy Divider */}
+      <div className="-mt-8">
+        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-16 md:h-24 lg:h-32">
+          <path fill="currentColor" className="text-white dark:text-black/60" d="M0,32 C360,120 1080,-40 1440,48 L1440,100 L0,100 Z" />
+        </svg>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
 const testimonials = [
   {
@@ -68,45 +69,47 @@ export const TestimonialsSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Testimonials Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="bg-card rounded-xl p-6 shadow-lg border hover:shadow-xl transition-shadow"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="text-4xl">{testimonial.avatar}</div>
-                <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.role} at {testimonial.company}
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-
-              <div className="relative">
-                <Quote className="absolute -top-2 -left-2 w-6 h-6 text-indigo-400 opacity-20" />
-                <p className="text-muted-foreground italic relative z-10">
-                  {testimonial.quote}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Testimonials Carousel */}
+        <Carousel className="relative max-w-3xl mx-auto">
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="px-2">
+                <motion.div
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="bg-card rounded-xl p-6 shadow-lg border hover:shadow-xl transition-shadow h-full flex flex-col justify-between"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-4xl">{testimonial.avatar}</div>
+                    <div>
+                      <h3 className="font-semibold">{testimonial.name}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonial.role} at {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <div className="relative flex-1">
+                    <Quote className="absolute -top-2 -left-2 w-6 h-6 text-indigo-400 opacity-20" />
+                    <p className="text-muted-foreground italic relative z-10">
+                      {testimonial.quote}
+                    </p>
+                  </div>
+                </motion.div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-center gap-2 mt-6">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </Carousel>
       </div>
     </section>
   );
