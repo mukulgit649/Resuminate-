@@ -27,13 +27,6 @@ const features = [
   }
 ];
 
-const stats = [
-  { value: "95%", label: "Success Rate" },
-  { value: "10K+", label: "Users Helped" },
-  { value: "50K+", label: "Jobs Matched" },
-  { value: "24/7", label: "AI Support" }
-];
-
 export const HeroSection: React.FC = () => {
   return (
     <div className="relative overflow-hidden">
@@ -99,28 +92,6 @@ export const HeroSection: React.FC = () => {
             </Button>
           </motion.div>
         </div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(99,102,241,0.15)' }}
-              transition={{ type: 'spring', stiffness: 300 }}
-              className="text-center bg-white/20 dark:bg-black/20 rounded-xl p-6 shadow-sm border border-transparent hover:border-indigo-300 dark:hover:border-indigo-600 transition-all cursor-pointer"
-            >
-              <div className="text-3xl font-bold text-indigo-500 mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Features Grid */}
         <motion.div
